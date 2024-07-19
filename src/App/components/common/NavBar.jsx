@@ -7,6 +7,7 @@ import { _useAuth } from '../../action/useAuth';
 import { useAuth } from '../../context/AuthContext';
 import UserProfile from './Profile';
 import UserPic from "../panel/demo.png"
+import { AddToCart } from './AddToCart';
 const NavBar = () => {    
   const [ authData ] = useAuth()
    const {signOutUser} = _useAuth()
@@ -23,7 +24,7 @@ const NavBar = () => {
 
   return (
    <div>
-     <nav className="bg-gradient-to-r from-blue-600 to-sky-500 text-white border-gray-400  dark:text-white dark:from-gray-700 dark:to-zinc-700 ">
+     <nav className="bg-gradient-to-r from-blue-600 to-sky-500 text-white border-gray-400  dark:text-white dark:from-slate-900 dark:to-gray-800 backdrop-blur-xl shadow-lg">
        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
          <i  className="flex items-center space-x-3 rtl:space-x-reverse">
          
@@ -32,7 +33,7 @@ const NavBar = () => {
            </span>
          </i>
 
-         <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+         <div className="flex items-center md:order-2 space-x-2 md:space-x-0 rtl:space-x-reverse">
   
 
           
@@ -41,11 +42,11 @@ const NavBar = () => {
             
             <ThemeToogle/>
            <UserProfile/>
-
+          <AddToCart/>
            <button
              data-collapse-toggle="navbar-user"
              type="button"
-             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-transparent dark:text-gray-400 dark:hover:bg-gray-200 dark:focus:ring-gray-600"
+             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-transparent dark:text-gray-400 dark:hover:bg-gray-200 dark:focus:ring-gray-600 md:block hidden"
              aria-controls="navbar-user"
              aria-expanded={isNavOpen}
              onClick={toggleNav}
@@ -73,7 +74,7 @@ const NavBar = () => {
            id="navbar-user"
          >  
            {/* here is menu bg change krna hai sahe se lihgt mode ma  */}
-           <ul className="flex flex-col font-medium  md:p-3 p-4 mt-4 rounded-lg  text-white border-gray-400 bg-gradient-to-r from-blue-400/50 to-sky-600/25 backdrop-blur-md  dark:from-gray-800 dark:to-zinc-600 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:border-gray-800 dark:bg-zinc-600 md:bg-transparent ">
+           <ul className="flex flex-col font-medium  md:p-3 p-4 mt-4 rounded-lg  text-white border-gray-400 bg-gradient-to-r from-blue-400/50 to-sky-600/25 backdrop-blur-md  dark:from-gray-800 dark:to-gray-900 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:border-gray-800 dark:bg-zinc-600 md:bg-transparent ">
              <li>
                <NavLink to="/"
                   

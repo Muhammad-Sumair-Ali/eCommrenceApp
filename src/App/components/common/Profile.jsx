@@ -61,8 +61,8 @@ const UserProfile = () => {
       <img
         onClick={() => setOpen(true)}
         src={authData?.photoURL || UserPic}
-        className="h-11 w-11 hover:text-blue-700 cursor-pointer bg-transparent rounded-full"
-        style={{ marginLeft: "2px" }}
+        className="ring-1 ring-indigo-500 dark:ring-indigo-600 h-11 w-11 hover:text-blue-700 cursor-pointer bg-transparent rounded-full"
+        style={{ marginLeft: "4px" ,marginRight:"2px"}}
         alt="User Avatar"
       />
 
@@ -70,7 +70,7 @@ const UserProfile = () => {
         <DialogBackdrop className="fixed inset-0 bg-black bg-opacity-50" />
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full dark:bg-gray-600/25 dark:backdrop-blur-sm bg-white/0 backdrop-blur-sm items-center justify-center p-4 text-center sm:p-6">
-            <DialogPanel className="relative w-full max-w-xl transform overflow-hidden rounded-2xl dark:bg-zinc-700/75 bg-white/75 backdrop-blur-md p-6 m-2 md:m-12 text-left shadow-xl transition-all">
+            <DialogPanel className="relative w-full max-w-xl transform overflow-hidden rounded-2xl dark:bg-zinc-700/75 bg-white/75 backdrop-blur-md p-6 text-left m-2 md:m-12 shadow-xl transition-all">
               <button
                 type="button"
                 onClick={() => setOpen(false)}

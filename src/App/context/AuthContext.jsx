@@ -19,7 +19,6 @@ const AuthProvider = ({ children }) => {
 
     return unsubscribe;
   }, []);
-  console.log("authData", authData)
   return (
     <AuthContext.Provider value={[  authData ]}>
       {children}

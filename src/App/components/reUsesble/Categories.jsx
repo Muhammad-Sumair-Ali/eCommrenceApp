@@ -5,7 +5,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import "./style.css";
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { IoAddCircleOutline } from "react-icons/io5";
+import { IoAddCircleOutline } from "react-icons/io5"; 
 const Categories = () => {
   return (
 <>
@@ -20,7 +20,7 @@ const Categories = () => {
     </div>
   </div>
   <div
-    className="w-screen bg-indigo-500 dark:bg-zinc-700 dark:text-white px-4 py-3 text-white flex items-center justify-center px-3 lg:px-8 mb-4 mt-7 overflow-hidden"
+    className="w-screen bg-white dark:bg-gray-900 dark:text-white px-5 py-3 text-white flex items-center justify-center px-3 lg:px-8 mb-4 mt-7 overflow-hidden"
   >
     <a
       className="bg-gradient-to-r from-blue-800 to-violet-500 text-white border-gray-400  dark:text-white dark:from-violet-600 dark:to-fuchsia-500 inline-block rounded-md text-center font-small hover:bg-indigo-700 p-2 shadow-2xl border-0 w-72"
@@ -28,7 +28,7 @@ const Categories = () => {
     Some Popular Categories
     </a>
   </div>
-    <div className='w-screen box-border p-8 md-p-16'> 
+    <div className='w-screen box-border p-8 md-p-16 dark:bg-gray-900 '> 
       <Swiper
         slidesPerView={4}
         spaceBetween={20} 
@@ -87,13 +87,13 @@ const Categories = () => {
               <span
                 className="mt-2 block rounded-md border-none transition hover:scale-105 bg-gradient-to-r from-blue-800 to-violet-500 text-white border-gray-400  dark:text-white dark:from-violet-700 dark:to-yellow-400 px-5 py-3 text-sm font-medium uppercase tracking-widest text-white transition-colors hover:bg-indigo-700 hover:text-white"
               >
-                Learn More
+                More
               </span>
-              {/* <span
+               <span
                 className="absolute -right-px -top-px rounded-bl-3xl rounded-tr-3xl bg-rose-600 px-2 py-2 font-small uppercase tracking-widest text-white dark:text-white"
               >
                 Save 10%
-              </span> */}
+              </span> 
             </div>
           </a>
         </SwiperSlide>
@@ -117,7 +117,7 @@ const Categories = () => {
               <span
                  className="mt-2 block rounded-md border-none transition hover:scale-105 bg-gradient-to-r from-blue-800 to-violet-500 text-white border-gray-400  dark:text-white dark:from-violet-700 dark:to-yellow-400 px-5 py-3 text-sm font-medium uppercase tracking-widest text-white transition-colors hover:bg-indigo-700 hover:text-white"
               >
-                Learn More
+               More
               </span>
               {/* <span
                 className="absolute -right-px -top-px rounded-bl-3xl rounded-tr-3xl bg-rose-600 px-2 py-2 font-small uppercase tracking-widest text-white dark:text-white"
@@ -147,7 +147,7 @@ const Categories = () => {
               <span
                  className="mt-2 block rounded-md border-none transition hover:scale-105 bg-gradient-to-r from-blue-800 to-violet-500 text-white border-gray-400  dark:text-white dark:from-violet-700 dark:to-yellow-400 px-5 py-3 text-sm font-medium uppercase tracking-widest text-white transition-colors hover:bg-indigo-700 hover:text-white"
               >
-                Learn More
+               More
               </span>
               <span
                 className="absolute -right-px -top-px rounded-bl-3xl rounded-tr-3xl bg-rose-600 px-2 py-2 font-small uppercase tracking-widest text-white dark:text-white"
@@ -177,7 +177,7 @@ const Categories = () => {
               <span
                 c className="mt-2 block rounded-md border-none transition hover:scale-105 bg-gradient-to-r from-blue-800 to-violet-500 text-white border-gray-400  dark:text-white dark:from-violet-700 dark:to-yellow-400 px-5 py-3 text-sm font-medium uppercase tracking-widest text-white transition-colors hover:bg-indigo-700 hover:text-white"
               >
-                Learn More
+               More
               </span>
              
             </div>
