@@ -8,7 +8,6 @@ export const AddToCart = () => {
   const [open, setOpen] = useState(false);
   const [products, setProducts] = useState([]);
 
-  // Fetch cart items from localStorage whenever the dialog is opened
   useEffect(() => {
     if (open) {
       const cartItems = JSON.parse(localStorage.getItem("carts")) || [];
