@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useGetAllPosts } from '../../action/usePost';
+import { addCart, useGetAllPosts } from '../../action/usePost';
 import CardsSkeleton from '../panel/CardsSkeleton';
 import toast from 'react-hot-toast';
 
@@ -8,15 +8,9 @@ const Products = () => {
   const navigate = useNavigate();
   const { posts, loading, error, fetchPosts } = useGetAllPosts();
 
-  const addCart = (product) => {
-    toast.success("Product added to cart");
-
-    let cart = localStorage.getItem("carts");
-    cart = cart ? JSON.parse(cart) : [];
-    cart.push(product);
-
-    localStorage.setItem("carts", JSON.stringify(cart));
-  };
+  const addItem = (item) => {
+    addCart(item)
+  }
 
   useEffect(() => {
     fetchPosts();
@@ -92,7 +86,7 @@ const Products = () => {
                 </small>
                 <div className="mt-4 flex gap-2">
                   <button
-                    onClick={() => addCart(product)}
+                    onClick={() => addItem(product)}
                     className="w-72 p-4 text-sm font-medium transition hover:scale-105 bg-gradient-to-r from-blue-800 to-violet-500 text-white border-gray-400 dark:text-white dark:from-violet-700 dark:to-yellow-400 inline-block rounded-md border border-transparent px-8 py-3 text-center font-medium hover:bg-indigo-700 shadow-2xl border-0"
                   >
                     Add to Cart

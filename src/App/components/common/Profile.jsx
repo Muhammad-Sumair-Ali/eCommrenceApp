@@ -1,60 +1,17 @@
 import React, { useState } from "react";
-import { getAuth, updateProfile } from "firebase/auth";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useAuth } from "../../context/AuthContext";
 import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
 import { IoMdClose } from "react-icons/io";
 import UserPic from "../panel/demo.png";
 import { Link } from "react-router-dom";
 import { _useAuth } from "../../action/useAuth";
-import toast from "react-hot-toast";
+import { UpdateProfile } from "../../action/usePost";
 
 const UserProfile = () => {
   const { signOutUser } = _useAuth();
   const [open, setOpen] = useState(false);  
   const [authData] = useAuth();
-  const [displayName, setDisplayName] = useState("");
-  const [photoFile, setPhotoFile] = useState(null);
-  const [phonenumber, setPhonenumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const auth = getAuth();
-  const user = auth.currentUser;
-
-  const handleUpdateProfile = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    setError(null);
-
-    try {
-      let photoURL;
-
-      if (photoFile) {
-        const storage = getStorage();
-        const storageRef = ref(storage, `profilePictures/${user.uid}`);
-        await uploadBytes(storageRef, photoFile);
-        photoURL = await getDownloadURL(storageRef);
-      }
-
-      await updateProfile(user, {
-        displayName: displayName,
-        photoURL: photoURL,
-        email: email,
-        phoneNumber: phonenumber,
-      });
-      toast.success("Profile updated successfully");
-    } catch (error) {
-      setError("Failed to update profile");
-      console.error("Error updating profile:", error);
-    } finally {
-      setLoading(false);  
-    }
-  };
-
-  const handleFileChange = (event) => {
-    setPhotoFile(event.target.files[0]);
-  };
+  const { handleUpdateProfile, handleFileChange, displayName,  setDisplayName, email,  setEmail,phonenumber, setPhonenumber,loading, error,} = UpdateProfile()
 
   return (
     <>
@@ -168,12 +125,12 @@ const UserProfile = () => {
                             Phone Number
                           </label>
                           <input
-                            type="tel"
+                            type="text"
                             id="phoneNumber"
                             value={phonenumber}
                             onChange={(e) => setPhonenumber(e.target.value)}
                             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:text-white p-2"
-                            placeholder="Change Phone Number"
+                            placeholder={authData?.phoneNumber || "Not Available"}
                           />
                         </div>
                       </div>
