@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import { updateProfile } from "firebase/auth";
-import { collection, addDoc, getDocs,getDoc, doc, updateDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs,getDoc, doc, updateDoc, deleteDoc } from 'firebase/firestore';
 import { db, storage,auth} from './firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage'; 
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
+
+
+
 export const useGetAllPosts = () => {
   const [authData] = useAuth();
   const [posts, setPosts] = useState([]);
@@ -73,7 +76,20 @@ export const useAddPost = () => {
       setError(error);
     }
   };
-
+  const deletPost = async (id) => {
+    if (confirm("Are you sure you want to delete this post?") === true) {
+      toast.promise(
+        deleteDoc(doc(db, "posts", id)),
+        {
+          loading: 'Deleting...',
+          success: <b>Post deleted successfully!</b>,
+          error: <b>Failed to delete post.</b>,
+        }
+      );
+    } else {
+      toast.error('Cancel delete post');
+    }
+  };
   return {
     setPrice,
     price,
@@ -85,9 +101,25 @@ export const useAddPost = () => {
     setPhoto,
     addPost,
     handleFileChange,
-    error
+    error,
+    deletPost
   };
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -123,7 +155,6 @@ export const useGetProduct = (productId) => {
 
   return { product, loading, error };
 };
-
 
 export const UpdateProfile = () => {
   const [authData] = useAuth();

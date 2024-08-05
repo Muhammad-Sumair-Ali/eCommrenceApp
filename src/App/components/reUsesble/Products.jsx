@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addCart, useGetAllPosts } from '../../action/usePost';
+import { addCart, useAddPost, useGetAllPosts } from '../../action/usePost';
 import CardsSkeleton from '../panel/CardsSkeleton';
 import toast from 'react-hot-toast';
-
+import { useAuth } from '../../context/AuthContext';
+import { MdDeleteForever } from "react-icons/md";
 const Products = () => {
+  const [authData] = useAuth()
   const navigate = useNavigate();
   const { posts, loading, error, fetchPosts } = useGetAllPosts();
-
+  const {deletPost } = useAddPost()
   const addItem = (item) => {
     addCart(item)
   }
@@ -39,6 +41,11 @@ const Products = () => {
               key={product.id}
               className="group relative block overflow-hidden bg-gradient-to-r from-violet-100 to-blue-200 text-white rounded-lg dark:text-white dark:from-slate-700 dark:to-zinc-600 w-96 sm:w-60 md:w-72 lg:w-80 mb-4"
             >
+              <button className="absolute start-5 top-5 z-10 rounded-full bg-transparent  text-red-600 hover:bg-gray-700 transition" >
+                {product?.userEmail === authData?.email ?  <MdDeleteForever className='bg-gray-200/75 rounded-2xl p-1' size={42} onClick={() => deletPost(product?.id)}/> : ""}
+              </button>
+              
+               
               <button className="absolute end-5 top-5 z-10 rounded-full bg-white p-3 text-gray-900 transition hover:bg-slate-600 hover:text-yellow-400">
                 <span className="sr-only">Wishlist</span>
                 <svg
@@ -72,6 +79,7 @@ const Products = () => {
                     User: {product?.userName}
                   </small>
                 </div>
+                
                 <div className="flex justify-between align-center">
                   <h3 className="mt-3 text-md font-medium text-gray-900 dark:text-gray-200">
                     <i>Title: </i>

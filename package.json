@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.1.2",
+    "@tanstack/react-query": "^5.51.21",
     "firebase": "^10.12.3",
     "idb": "^8.0.0",
     "react-hot-toast": "^2.4.1",

@@ -15,12 +15,12 @@ import {
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import toast from "react-hot-toast";
 const firebaseConfig = {
-  apiKey: "AIzaSyBCq_WX-qpQVSmvRXwzCpJraJwuuiQNQ1s",
-  authDomain: "ecommerce-sumair.firebaseapp.com",
-  projectId: "ecommerce-sumair",
-  storageBucket: "ecommerce-sumair.appspot.com",
-  messagingSenderId: "417523964073",
-  appId: "1:417523964073:web:05e4e00a216bbcb56231b8"
+  apiKey: "AIzaSyBup_Xlr5X6DyZEew6KTvEwACjl75dRcls",
+  authDomain: "ecomrece2k24.firebaseapp.com",
+  projectId: "ecomrece2k24",
+  storageBucket: "ecomrece2k24.appspot.com",
+  messagingSenderId: "912142878729",
+  appId: "1:912142878729:web:cae79cc2ae1f97809350d8"
 };
 
 const app = initializeApp(firebaseConfig);

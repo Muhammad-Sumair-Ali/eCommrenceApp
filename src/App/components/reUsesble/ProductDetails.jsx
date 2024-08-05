@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-
 import NavBar from '../common/NavBar'; 
 import { addCart, useGetDetails } from '../../action/usePost';
 import { DetailsSkeleton } from '../panel/DetailsSkeleton';
