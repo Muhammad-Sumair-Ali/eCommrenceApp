@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import NavBar from '../common/NavBar'; 
-import { addCart, useGetDetails } from '../../action/usePost';
+import { addCart, useAddPost, useGetDetails } from '../../action/usePost';
 import { DetailsSkeleton } from '../panel/DetailsSkeleton';
-
+import { useAuth } from '../../context/AuthContext';
+import { MdDeleteForever } from "react-icons/md";
 
 const ProductDetail = () => {
-  
+  const [authData] = useAuth()
   const { id } = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const {deletPost } = useAddPost()
   const addItem = (item) => {
     addCart(item)
   }
@@ -34,8 +36,11 @@ const ProductDetail = () => {
                 id="mainImage"
               />
             </div>
-     
+            
             <div className="w-full md:w-1/2 px-4">
+              <button className="absolute end-10 top-50 z-10 rounded-full bg-transparent  text-red-600 hover:bg-gray-700 transition" >
+                {data?.userEmail === authData?.email ?  <MdDeleteForever className='bg-gray-200/75 rounded-2xl p-1' size={48} onClick={() => deletPost(data?.id)}/> : ""}
+              </button>
               <h2 className="text-3xl font-bold mb-2 dark:text-violet-500">
                {data?.title}
               </h2>
@@ -107,6 +112,7 @@ const ProductDetail = () => {
                 </svg>
                 <span className="ml-2 text-gray-600 dark:text-gray-300">4.2 (17 reviews)</span>
               </div>
+              
               <p className="dark:text-gray-200 text-gray-700 mb-6">
                {data?.description} 
               </p>
@@ -134,6 +140,10 @@ const ProductDetail = () => {
                   className="w-12 text-center rounded-md border-gray-300 text-gray-800 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 />
               </div>
+              <div className="flex justify-between align-center mb-2 items-center" >
+              <p className="flex items-center gap-2" >Seller Profile <img src={data.userImage || "https://www.olx.com.pk/assets/iconProfilePicture.7975761176487dc62e25536d9a36a61d.png"} className="h-10 w-10 rounded-xl" /> </p>
+                <p>Seller Name : {data?.userName} </p>
+              </div> 
               <div className="flex space-x-4 mb-6">
                 <button
                   onClick={() => addItem(data)}

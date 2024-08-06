@@ -113,7 +113,7 @@ const AddPost = () => {
                       Product Description
                     </label>
                     <textarea
-                      minlength="10"
+                      maxlength={70}
                       required
                       id="description"
                       name="description"

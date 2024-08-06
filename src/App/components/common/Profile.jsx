@@ -17,7 +17,7 @@ const UserProfile = () => {
     <>
       <img
         onClick={() => setOpen(true)}
-        src={authData?.photoURL || UserPic}
+        src={authData?.photoURL || "https://4f95234d-a943-4d84-bc4b-3260a42ac61d-00-vtzxu0hlhtxh.janeway.replit.dev/src/App/components/panel/demo.png"}
         className="ring-1 ring-indigo-500 dark:ring-indigo-600 h-11 w-11 hover:text-blue-700 cursor-pointer bg-transparent rounded-full"
         style={{ marginLeft: "4px" ,marginRight:"2px"}}
         alt="User Avatar"

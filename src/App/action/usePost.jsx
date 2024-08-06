@@ -64,7 +64,8 @@ export const useAddPost = () => {
         photoURL,
         createdAt: new Date().toLocaleString(), 
         userName: authData.displayName,
-        userEmail: authData.email
+        userEmail: authData.email,
+        userImage: authData.photoURL,
       };
 
       console.log(newPost, "newPost");

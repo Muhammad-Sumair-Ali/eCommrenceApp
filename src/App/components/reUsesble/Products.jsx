@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { json, useNavigate } from 'react-router-dom';
 import { addCart, useAddPost, useGetAllPosts } from '../../action/usePost';
 import CardsSkeleton from '../panel/CardsSkeleton';
 import toast from 'react-hot-toast';
@@ -14,9 +14,7 @@ const Products = () => {
     addCart(item)
   }
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
+ 
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -63,7 +61,7 @@ const Products = () => {
                   />
                 </svg>
               </button>
-
+          
               <img
                 src={product?.photoURL}
                 alt=""
@@ -75,9 +73,12 @@ const Products = () => {
                   <span className="whitespace-nowrap bg-gradient-to-r from-blue-800 to-violet-500 text-white border-black dark:text-white dark:from-violet-700 dark:to-yellow-600 shadow-xl px-3 py-1.5 text-md font-medium rounded-md">
                     New
                   </span>
-                  <small className="whitespace-nowrap shadow-xl px-3 py-1.5 text-md font-medium rounded-md uppercase text-gray-800 dark:text-white">
-                    User: {product?.userName}
-                  </small>
+        <div className='flex m-0 text-gray-900 p-0 gap-2 items-center'>
+                    <label htmlFor='seller' className="m-0 p-0 dark:text-gray-100" >Seller:</label> 
+                    {product.userEmail ? <img src={authData?.email === product.userEmail ? authData?.photoURL : product.userImage} className="ring-1 shadow-2xl rounded-2xl h-10 w-10" id='seller' alt="image not found"/> : <p className="dark:text-gray-100 m-0 ">{product.userName}</p>}
+                  
+                  </div> 
+                                   
                 </div>
                 
                 <div className="flex justify-between align-center">

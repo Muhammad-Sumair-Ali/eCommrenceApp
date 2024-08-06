@@ -36,6 +36,7 @@ export async function register(userinfo) {
 
     await updateProfile(userCredential.user, {
       displayName: name,
+      photoURL:"https://www.olx.com.pk/assets/iconProfilePicture.7975761176487dc62e25536d9a36a61d.png",
     });  
 
     await addDoc(collection(db, "users"), {
