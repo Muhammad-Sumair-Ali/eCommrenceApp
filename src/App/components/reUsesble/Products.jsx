@@ -9,7 +9,9 @@ const Products = () => {
   const [authData] = useAuth()
   const navigate = useNavigate();
   const { posts, loading, error, fetchPosts } = useGetAllPosts();
-  const {deletPost } = useAddPost()
+  const {deletPost } = useAddPost();
+  
+  
   const addItem = (item) => {
     addCart(item)
   }
@@ -24,15 +26,23 @@ const Products = () => {
     <div className="w-screen overflow-hidden">
       <div className="pt-10 flex flex-wrap align-center justify-center gap-4 sm:gap-8 dark:bg-gray-900 overflow-hidden pb-16">
         <div className="w-screen bg-indigo-500 backdrop-blur-lg dark:bg-gray-800 dark:text-gray-100 px-2 py-3 text-white flex items-center justify-between px-3 lg:px-4 mb-4">
+         
           <p className="text-center flex align-center font-small">
             Our Latest + Products 
           </p>
-
+         
           <a className="bg-gradient-to-r from-blue-800 to-violet-500 text-white border-gray-400 dark:text-white dark:from-violet-700 dark:to-fuchsia-800 inline-block rounded-md border border-transparent px-5 py-2 text-center font-small hover:bg-indigo-700 shadow-2xl border-0 w-48">
             Explore Products
           </a>
-        </div>
+         </div>
+            
+     
 
+
+
+
+
+        
         {posts &&
           posts.map((product) => (
             <a
@@ -117,3 +127,5 @@ const Products = () => {
 };
 
 export default Products;
+
+

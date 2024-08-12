@@ -100,7 +100,7 @@ const AddPost = () => {
                       required
                       id="price"
                       name="price"
-                      type="text"
+                      type="number"
                       value={price}
                       onChange={(e) => setPrice(e.target.value)}
                       placeholder="Product Price"

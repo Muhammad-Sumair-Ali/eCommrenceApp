@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 export const AddToCart = () => {
   const [open, setOpen] = useState(false);
   const [products, setProducts] = useState([]);
-
+ const total = products?.reduce((acc, product) => acc + Number.parseInt(product.price), 0);
   useEffect(() => {
     if (open) {
       const cartItems = JSON.parse(localStorage.getItem("carts")) || [];
@@ -91,12 +91,13 @@ export const AddToCart = () => {
                     </div>
                   </div>
                   <div className="border-t border-gray-200 px-2 py-4 sm:px-6">
-                  
-                    <div className="mt-0">
+                  <b className='text-lg'> Total Amount : {total}</b>
+                    <div className="mt-3">
                       <a
                       
                         className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                       >
+                       
                         Checkout
                       </a>
                     </div>

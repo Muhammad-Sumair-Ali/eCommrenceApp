@@ -44,7 +44,8 @@ const ProductDetail = () => {
               <h2 className="text-3xl font-bold mb-2 dark:text-violet-500">
                {data?.title}
               </h2>
-              <p className="text-gray-600 dark:text-gray-300 mb-4">00:1038347</p>
+              
+              <p className="text-gray-600 dark:text-gray-300 mb-4">Published: {data?.createdAt}</p>
               <div className="mb-4">
                 <span className="text-2xl font-bold mr-2">{data?.price}</span>
                 <span className="text-gray-500 line-through dark:text-gray-400">30% Off</span>
