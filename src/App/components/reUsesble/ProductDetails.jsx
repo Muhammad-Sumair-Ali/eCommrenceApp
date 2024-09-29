@@ -8,13 +8,22 @@ import { MdDeleteForever } from "react-icons/md";
 
 const ProductDetail = () => {
   const [authData] = useAuth()
+
+  const [data, setData] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
   const {deletPost } = useAddPost()
   const addItem = (item) => {
     addCart(item)
   }
-   const { data } = useGetDetails(id)
+  useEffect(() => {
+    fetch(`https://dummyjson.com/products/${id}`)
+      .then(res => res.json())
+      .then(item => setData(item));
+    
+  }, []);
+  
+   // const { data } = useGetDetails(id)
    if(!data){
      return <> 
         <NavBar />
@@ -30,7 +39,7 @@ const ProductDetail = () => {
           <div className="flex flex-wrap -mx-4">
             <div className="w-full md:w-1/2 px-4 mb-8">
               <img
-                src={data?.photoURL}
+                src={data?.thumbnail}
                 alt="Product"
                 className="w-full h-auto rounded-lg shadow-md dark:shadow-2xl  mb-4"
                 id="mainImage"

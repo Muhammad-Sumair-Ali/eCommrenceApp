@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useGetAllPosts } from '../../action/usePost';
 import { IoSearchOutline } from "react-icons/io5";
 import { IoIosCloseCircle } from "react-icons/io";
@@ -10,11 +10,19 @@ import { useNavigate } from 'react-router-dom';
 const SearchItems = () => {
   const { posts, loading, error } = useGetAllPosts();
   const [searchQuery, setSearchQuery] = useState(null)
+  const [data, setData] = useState(null)
   const [open, setOpen] = useState(false)
   const [message, setMessage] = useState("search...")
   const navigate = useNavigate();
 
-  const filteredTodos = posts?.filter(item =>
+
+  useEffect(() => {
+    fetch('https://dummyjson.com/products')
+      .then(res => res.json())
+      .then(item => setData(item));
+  }, []);
+  
+  const filteredTodos = data?.products?.filter(item =>
     item.title?.toLowerCase().includes(searchQuery?.toLowerCase())
   );
   // console.log(filteredTodos)
@@ -32,9 +40,8 @@ const SearchItems = () => {
     updateMessage();
   }, [searchQuery, filteredTodos]);
 
-  if (error) {
-    return <div>Error loading posts: {error.message}</div>;
-  }
+  //if (error) {
+  //  return <div>Error loading posts: //{error.message}</div>;}
 
   return (
     <div>  
@@ -68,7 +75,7 @@ const SearchItems = () => {
                     <div className="flex-shrink-0 relative ">
                       <img
                         className="rounded-full w-11 h-11"
-                        src={item?.photoURL}
+                        src={item?.thumbnail}
                         alt="image"
                       />
                       <div className="absolute flex items-center justify-center w-5 h-5 ms-6 -mt-5 bg-blue-600 border border-white rounded-full dark:border-gray-800">
